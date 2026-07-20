@@ -1,0 +1,13 @@
+[project]
+name = "news-pipeline-evaluation"
+version = "0.1.0"
+description = "Offline evaluation of saved current and updated news pipeline outputs"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = []
+
+[tool.uv]
+package = false

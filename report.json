@@ -1,0 +1,1614 @@
+{
+  "report_schema_version": "1.0",
+  "integrity": {
+    "passed": true,
+    "files": {
+      "goldens.jsonl": {
+        "passed": true,
+        "row_count": {
+          "expected": 24,
+          "actual": 24,
+          "passed": true
+        },
+        "unique_key": {
+          "fields": [
+            "id"
+          ],
+          "passed": true,
+          "duplicates": [],
+          "errors": []
+        },
+        "complete_combinations": {
+          "applicable": false,
+          "passed": true,
+          "missing": [],
+          "unexpected": []
+        },
+        "orphan_case_ids": {
+          "passed": true,
+          "values": []
+        },
+        "sha256": "bd243c0ff0fbfd9eb2ae7caf273b6c857bc4ef371a79a1235c6817faa5cbdcd3"
+      },
+      "pipeline_outputs.jsonl": {
+        "passed": true,
+        "row_count": {
+          "expected": 48,
+          "actual": 48,
+          "passed": true
+        },
+        "unique_key": {
+          "fields": [
+            "case_id",
+            "version"
+          ],
+          "passed": true,
+          "duplicates": [],
+          "errors": []
+        },
+        "complete_combinations": {
+          "applicable": true,
+          "passed": true,
+          "missing": [],
+          "unexpected": [],
+          "expected_count": 48
+        },
+        "orphan_case_ids": {
+          "passed": true,
+          "values": []
+        },
+        "sha256": "f61170ff1a272b42e3f74bf2b5b736f7c1cef4d5a743b85d82e9e35fd7f72792"
+      },
+      "judge_outputs.jsonl": {
+        "passed": true,
+        "row_count": {
+          "expected": 96,
+          "actual": 96,
+          "passed": true
+        },
+        "unique_key": {
+          "fields": [
+            "case_id",
+            "version",
+            "criterion"
+          ],
+          "passed": true,
+          "duplicates": [],
+          "errors": []
+        },
+        "complete_combinations": {
+          "applicable": true,
+          "passed": true,
+          "missing": [],
+          "unexpected": [],
+          "expected_count": 96
+        },
+        "orphan_case_ids": {
+          "passed": true,
+          "values": []
+        },
+        "sha256": "175779509680d8a980247445f33637a62142cf6888d5ee82793b9dfcda3fa76c"
+      }
+    }
+  },
+  "dataset": {
+    "case_count": 24,
+    "expected_entity_count": 38,
+    "expected_positive_count": 19,
+    "expected_negative_count": 19,
+    "empty_expected_case_ids": [
+      "news-004",
+      "news-016"
+    ]
+  },
+  "configuration": {
+    "aggregation": "micro counters over all cases in each version",
+    "matching": "greedy one-to-one; golden name and explicit aliases only",
+    "entity_decision_rule": "(a_event + c_persistence) / 2 >= 0.8",
+    "roles": [
+      "constituting",
+      "status_change",
+      "achievement",
+      "agent",
+      "umbrella_routine",
+      "context"
+    ],
+    "valid_abc_values": [
+      0.2,
+      0.6,
+      1.0
+    ],
+    "pipeline_thresholds": {
+      "role_accuracy": 0.85,
+      "a_accuracy": 0.84,
+      "c_accuracy": 0.78,
+      "decision_accuracy": 0.82
+    },
+    "judge_thresholds": {
+      "entity_extraction_completeness": 0.78,
+      "significance_score_adequacy": 0.82
+    }
+  },
+  "pipeline_evaluation": {
+    "versions": {
+      "current": {
+        "counters": {
+          "E_TP": 25,
+          "E_FN": 13,
+          "E_FP": 22,
+          "S_TP": 12,
+          "S_FN": 7,
+          "S_FP": 4,
+          "role_correct": 22,
+          "a_correct": 22,
+          "c_correct": 22,
+          "decision_correct": 31,
+          "expected_entity_count": 38,
+          "actual_entity_count": 47
+        },
+        "metrics": {
+          "extraction_precision": {
+            "numerator": 25,
+            "denominator": 47,
+            "value": 0.5319148936170213
+          },
+          "extraction_recall": {
+            "numerator": 25,
+            "denominator": 38,
+            "value": 0.6578947368421053
+          },
+          "extraction_f1": {
+            "numerator": 50,
+            "denominator": 85,
+            "value": 0.5882352941176471
+          },
+          "role_accuracy": {
+            "numerator": 22,
+            "denominator": 25,
+            "value": 0.88,
+            "threshold": 0.85,
+            "passed": true
+          },
+          "a_accuracy": {
+            "numerator": 22,
+            "denominator": 25,
+            "value": 0.88,
+            "threshold": 0.84,
+            "passed": true
+          },
+          "c_accuracy": {
+            "numerator": 22,
+            "denominator": 25,
+            "value": 0.88,
+            "threshold": 0.78,
+            "passed": true
+          },
+          "decision_accuracy": {
+            "numerator": 31,
+            "denominator": 38,
+            "value": 0.8157894736842105,
+            "threshold": 0.82,
+            "passed": false
+          },
+          "significance_precision": {
+            "numerator": 12,
+            "denominator": 16,
+            "value": 0.75
+          },
+          "significance_recall": {
+            "numerator": 12,
+            "denominator": 19,
+            "value": 0.631578947368421
+          },
+          "significance_f1": {
+            "numerator": 24,
+            "denominator": 35,
+            "value": 0.6857142857142857
+          },
+          "false_positive_decision_rate": {
+            "numerator": 4,
+            "denominator": 16,
+            "value": 0.25
+          }
+        },
+        "strict_evaluation_passed": false,
+        "role_confusion_matrix": {
+          "constituting": {
+            "constituting": 3,
+            "status_change": 0,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "status_change": {
+            "constituting": 0,
+            "status_change": 3,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "achievement": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 10,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "agent": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 0,
+            "agent": 3,
+            "umbrella_routine": 0,
+            "context": 1,
+            "<invalid>": 0
+          },
+          "umbrella_routine": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 1,
+            "agent": 0,
+            "umbrella_routine": 2,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "context": {
+            "constituting": 0,
+            "status_change": 1,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 1,
+            "<invalid>": 0
+          }
+        },
+        "technical_errors": {
+          "count": 1,
+          "case_ids": [
+            "news-015"
+          ],
+          "details": [
+            {
+              "case_id": "news-015",
+              "version": "current",
+              "status": "error",
+              "error": "Техническая ошибка обработки примера",
+              "reasons": [
+                "status_error",
+                "actual_output_not_object"
+              ]
+            }
+          ]
+        },
+        "entity_details": {
+          "missing": [
+            {
+              "case_id": "news-001",
+              "expected_index": 0,
+              "expected_name": "Крокус Сити Холл",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-001",
+              "expected_index": 1,
+              "expected_name": "Теракт в Крокус Сити Холле (2024)",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-002",
+              "expected_index": 1,
+              "expected_name": "Екатеринбургская городская дума",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-003",
+              "expected_index": 1,
+              "expected_name": "Теннисный турнир в Индиан-Уэлсе 2026",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-008",
+              "expected_index": 0,
+              "expected_name": "ВГИК",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-010",
+              "expected_index": 0,
+              "expected_name": "Центральное командование ВС США",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-012",
+              "expected_index": 0,
+              "expected_name": "Российская наука",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-014",
+              "expected_index": 0,
+              "expected_name": "Правительственная комиссия по законопроектной деятельности",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-015",
+              "expected_index": 0,
+              "expected_name": "Владислав Бакальчук",
+              "expected_pass": true,
+              "technical_error": true
+            },
+            {
+              "case_id": "news-015",
+              "expected_index": 1,
+              "expected_name": "М.Видео",
+              "expected_pass": true,
+              "technical_error": true
+            },
+            {
+              "case_id": "news-019",
+              "expected_index": 1,
+              "expected_name": "Цивилизация майя",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-020",
+              "expected_index": 0,
+              "expected_name": "Касым-Жомарт Токаев",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-022",
+              "expected_index": 0,
+              "expected_name": "МОК",
+              "expected_pass": false,
+              "technical_error": false
+            }
+          ],
+          "extra": [
+            {
+              "case_id": "news-001",
+              "actual_index": 0,
+              "actual_name": "Теракт в «Крокус Сити Холле»",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-001",
+              "actual_index": 1,
+              "actual_name": "Суд",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-002",
+              "actual_index": 1,
+              "actual_name": "Техностройкомплект",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-002",
+              "actual_index": 2,
+              "actual_name": "Дума Екатеринбурга",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-003",
+              "actual_index": 1,
+              "actual_name": "Мастерс в Индиан-Уэллсе",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-007",
+              "actual_index": 2,
+              "actual_name": "Северная Атлантика",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-008",
+              "actual_index": 0,
+              "actual_name": "Шухер",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-009",
+              "actual_index": 1,
+              "actual_name": "Оксфорд",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-010",
+              "actual_index": 0,
+              "actual_name": "США",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-010",
+              "actual_index": 1,
+              "actual_name": "Иран",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-011",
+              "actual_index": 1,
+              "actual_name": "Европейский союз",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-012",
+              "actual_index": 0,
+              "actual_name": "Лазер",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-013",
+              "actual_index": 2,
+              "actual_name": "Италия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 0,
+              "actual_name": "Правкомиссия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 1,
+              "actual_name": "Российская армия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 2,
+              "actual_name": "Граждане РФ",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-020",
+              "actual_index": 0,
+              "actual_name": "Токаев",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-022",
+              "actual_index": 0,
+              "actual_name": "Крейг Риди",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-022",
+              "actual_index": 1,
+              "actual_name": "Международный олимпийский комитет",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-023",
+              "actual_index": 1,
+              "actual_name": "Израиль",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-023",
+              "actual_index": 2,
+              "actual_name": "ОАЭ",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-024",
+              "actual_index": 1,
+              "actual_name": "Кубок России по преследованию",
+              "actual_pass": true,
+              "issues": []
+            }
+          ],
+          "incorrect": [
+            {
+              "case_id": "news-002",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Виталий Чачин",
+              "actual_name": "Виталий Чачин",
+              "issues": [
+                {
+                  "field": "role_in_event",
+                  "expected": "context",
+                  "actual": "status_change",
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "a_event",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "c_persistence",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-003",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Даниил Медведев",
+              "actual_name": "Даниил Медведев",
+              "issues": [
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 1.0,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-005",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "Иосифов",
+              "actual_name": "Иосифов",
+              "issues": [
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-006",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "Смитсоновский институт",
+              "actual_name": "Смитсоновский институт",
+              "issues": [
+                {
+                  "field": "role_in_event",
+                  "expected": "agent",
+                  "actual": "context",
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-009",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Кембриджский университет",
+              "actual_name": "Кембридж",
+              "issues": [
+                {
+                  "field": "role_in_event",
+                  "expected": "umbrella_routine",
+                  "actual": "achievement",
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-011",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Русский мир (фонд)",
+              "actual_name": "Фонд «Русский мир»",
+              "issues": [
+                {
+                  "field": "a_event",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "c_persistence",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-017",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Кэри Маллиган",
+              "actual_name": "Кэри Маллиган",
+              "issues": [
+                {
+                  "field": "b_entity",
+                  "expected": 1.0,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-020",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "Командующий региональной группировкой",
+              "actual_name": "командующий региональной группировкой",
+              "issues": [
+                {
+                  "field": "a_event",
+                  "expected": 1.0,
+                  "actual": 0.2,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "c_persistence",
+                  "expected": 0.6,
+                  "actual": 0.2,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "b_entity",
+                  "expected": 0.6,
+                  "actual": 0.2,
+                  "reason": "mismatch_no_metric_effect"
+                },
+                {
+                  "field": "decision",
+                  "expected": true,
+                  "actual": false,
+                  "reason": "mismatch"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "updated": {
+        "counters": {
+          "E_TP": 22,
+          "E_FN": 16,
+          "E_FP": 24,
+          "S_TP": 11,
+          "S_FN": 8,
+          "S_FP": 3,
+          "role_correct": 20,
+          "a_correct": 20,
+          "c_correct": 18,
+          "decision_correct": 30,
+          "expected_entity_count": 38,
+          "actual_entity_count": 46
+        },
+        "metrics": {
+          "extraction_precision": {
+            "numerator": 22,
+            "denominator": 46,
+            "value": 0.4782608695652174
+          },
+          "extraction_recall": {
+            "numerator": 22,
+            "denominator": 38,
+            "value": 0.5789473684210527
+          },
+          "extraction_f1": {
+            "numerator": 44,
+            "denominator": 84,
+            "value": 0.5238095238095238
+          },
+          "role_accuracy": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "threshold": 0.85,
+            "passed": true
+          },
+          "a_accuracy": {
+            "numerator": 20,
+            "denominator": 22,
+            "value": 0.9090909090909091,
+            "threshold": 0.84,
+            "passed": true
+          },
+          "c_accuracy": {
+            "numerator": 18,
+            "denominator": 22,
+            "value": 0.8181818181818182,
+            "threshold": 0.78,
+            "passed": true
+          },
+          "decision_accuracy": {
+            "numerator": 30,
+            "denominator": 38,
+            "value": 0.7894736842105263,
+            "threshold": 0.82,
+            "passed": false
+          },
+          "significance_precision": {
+            "numerator": 11,
+            "denominator": 14,
+            "value": 0.7857142857142857
+          },
+          "significance_recall": {
+            "numerator": 11,
+            "denominator": 19,
+            "value": 0.5789473684210527
+          },
+          "significance_f1": {
+            "numerator": 22,
+            "denominator": 33,
+            "value": 0.6666666666666666
+          },
+          "false_positive_decision_rate": {
+            "numerator": 3,
+            "denominator": 14,
+            "value": 0.21428571428571427
+          }
+        },
+        "strict_evaluation_passed": false,
+        "role_confusion_matrix": {
+          "constituting": {
+            "constituting": 2,
+            "status_change": 0,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "status_change": {
+            "constituting": 0,
+            "status_change": 5,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "achievement": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 8,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "agent": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 0,
+            "agent": 3,
+            "umbrella_routine": 0,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "umbrella_routine": {
+            "constituting": 0,
+            "status_change": 0,
+            "achievement": 1,
+            "agent": 0,
+            "umbrella_routine": 1,
+            "context": 0,
+            "<invalid>": 0
+          },
+          "context": {
+            "constituting": 0,
+            "status_change": 1,
+            "achievement": 0,
+            "agent": 0,
+            "umbrella_routine": 0,
+            "context": 1,
+            "<invalid>": 0
+          }
+        },
+        "technical_errors": {
+          "count": 1,
+          "case_ids": [
+            "news-018"
+          ],
+          "details": [
+            {
+              "case_id": "news-018",
+              "version": "updated",
+              "status": "success",
+              "error": null,
+              "reasons": [
+                "entities_not_array"
+              ]
+            }
+          ]
+        },
+        "entity_details": {
+          "missing": [
+            {
+              "case_id": "news-001",
+              "expected_index": 0,
+              "expected_name": "Крокус Сити Холл",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-001",
+              "expected_index": 1,
+              "expected_name": "Теракт в Крокус Сити Холле (2024)",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-002",
+              "expected_index": 1,
+              "expected_name": "Екатеринбургская городская дума",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-003",
+              "expected_index": 1,
+              "expected_name": "Теннисный турнир в Индиан-Уэлсе 2026",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-008",
+              "expected_index": 0,
+              "expected_name": "ВГИК",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-010",
+              "expected_index": 0,
+              "expected_name": "Центральное командование ВС США",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-012",
+              "expected_index": 0,
+              "expected_name": "Российская наука",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-014",
+              "expected_index": 0,
+              "expected_name": "Правительственная комиссия по законопроектной деятельности",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-017",
+              "expected_index": 0,
+              "expected_name": "Кэри Маллиган",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-018",
+              "expected_index": 0,
+              "expected_name": "Мыс Кучиев",
+              "expected_pass": true,
+              "technical_error": true
+            },
+            {
+              "case_id": "news-018",
+              "expected_index": 1,
+              "expected_name": "Юрий Кучиев",
+              "expected_pass": true,
+              "technical_error": true
+            },
+            {
+              "case_id": "news-018",
+              "expected_index": 2,
+              "expected_name": "Законодательное собрание Красноярского края",
+              "expected_pass": false,
+              "technical_error": true
+            },
+            {
+              "case_id": "news-019",
+              "expected_index": 1,
+              "expected_name": "Цивилизация майя",
+              "expected_pass": true,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-020",
+              "expected_index": 0,
+              "expected_name": "Касым-Жомарт Токаев",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-021",
+              "expected_index": 0,
+              "expected_name": "Орден Мужества",
+              "expected_pass": false,
+              "technical_error": false
+            },
+            {
+              "case_id": "news-022",
+              "expected_index": 0,
+              "expected_name": "МОК",
+              "expected_pass": false,
+              "technical_error": false
+            }
+          ],
+          "extra": [
+            {
+              "case_id": "news-001",
+              "actual_index": 0,
+              "actual_name": "Теракт в «Крокус Сити Холле»",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-001",
+              "actual_index": 1,
+              "actual_name": "Суд",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-002",
+              "actual_index": 1,
+              "actual_name": "Техностройкомплект",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-002",
+              "actual_index": 2,
+              "actual_name": "Дума Екатеринбурга",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-003",
+              "actual_index": 1,
+              "actual_name": "Мастерс в Индиан-Уэллсе",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-007",
+              "actual_index": 2,
+              "actual_name": "Северная Атлантика",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-008",
+              "actual_index": 0,
+              "actual_name": "Шухер",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-009",
+              "actual_index": 1,
+              "actual_name": "Оксфорд",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-010",
+              "actual_index": 0,
+              "actual_name": "США",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-010",
+              "actual_index": 1,
+              "actual_name": "Иран",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-011",
+              "actual_index": 1,
+              "actual_name": "Европейский союз",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-012",
+              "actual_index": 0,
+              "actual_name": "Лазер",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-013",
+              "actual_index": 2,
+              "actual_name": "Италия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 0,
+              "actual_name": "Правкомиссия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 1,
+              "actual_name": "Российская армия",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-014",
+              "actual_index": 2,
+              "actual_name": "Граждане РФ",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-015",
+              "actual_index": 2,
+              "actual_name": "Совет директоров «М.Видео»",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-015",
+              "actual_index": 3,
+              "actual_name": "ТАСС",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-020",
+              "actual_index": 0,
+              "actual_name": "Токаев",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-021",
+              "actual_index": 0,
+              "actual_name": "Орден Мужества России",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-022",
+              "actual_index": 0,
+              "actual_name": "Крейг Риди",
+              "actual_pass": true,
+              "issues": []
+            },
+            {
+              "case_id": "news-022",
+              "actual_index": 1,
+              "actual_name": "Международный олимпийский комитет",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-023",
+              "actual_index": 1,
+              "actual_name": "Израиль",
+              "actual_pass": false,
+              "issues": []
+            },
+            {
+              "case_id": "news-023",
+              "actual_index": 2,
+              "actual_name": "ОАЭ",
+              "actual_pass": false,
+              "issues": []
+            }
+          ],
+          "incorrect": [
+            {
+              "case_id": "news-002",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Виталий Чачин",
+              "actual_name": "Виталий Чачин",
+              "issues": [
+                {
+                  "field": "role_in_event",
+                  "expected": "context",
+                  "actual": "status_change",
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "a_event",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "c_persistence",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-003",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Даниил Медведев",
+              "actual_name": "Даниил Медведев",
+              "issues": [
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 1.0,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-005",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "Иосифов",
+              "actual_name": "Иосифов",
+              "issues": [
+                {
+                  "field": "b_entity",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-009",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Кембриджский университет",
+              "actual_name": "Кембридж",
+              "issues": [
+                {
+                  "field": "role_in_event",
+                  "expected": "umbrella_routine",
+                  "actual": "achievement",
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-011",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Русский мир (фонд)",
+              "actual_name": "Фонд «Русский мир»",
+              "issues": [
+                {
+                  "field": "a_event",
+                  "expected": 0.2,
+                  "actual": 0.6,
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-015",
+              "expected_index": 0,
+              "actual_index": 0,
+              "expected_name": "Владислав Бакальчук",
+              "actual_name": "Владислав Бакальчук",
+              "issues": [
+                {
+                  "field": "c_persistence",
+                  "expected": 0.6,
+                  "actual": 1.0,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "b_entity",
+                  "expected": 1.0,
+                  "actual": 0.6,
+                  "reason": "mismatch_no_metric_effect"
+                }
+              ]
+            },
+            {
+              "case_id": "news-015",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "М.Видео",
+              "actual_name": "М.Видео",
+              "issues": [
+                {
+                  "field": "c_persistence",
+                  "expected": 0.6,
+                  "actual": 1.0,
+                  "reason": "mismatch"
+                }
+              ]
+            },
+            {
+              "case_id": "news-020",
+              "expected_index": 1,
+              "actual_index": 1,
+              "expected_name": "Командующий региональной группировкой",
+              "actual_name": "командующий региональной группировкой",
+              "issues": [
+                {
+                  "field": "c_persistence",
+                  "expected": 0.6,
+                  "actual": 0.2,
+                  "reason": "mismatch"
+                },
+                {
+                  "field": "b_entity",
+                  "expected": 0.6,
+                  "actual": 0.2,
+                  "reason": "mismatch_no_metric_effect"
+                },
+                {
+                  "field": "decision",
+                  "expected": true,
+                  "actual": false,
+                  "reason": "mismatch"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "comparison": {
+      "counter_deltas": {
+        "E_TP": -3,
+        "E_FN": 3,
+        "E_FP": 2,
+        "S_TP": -1,
+        "S_FN": 1,
+        "S_FP": -1,
+        "role_correct": -2,
+        "a_correct": -2,
+        "c_correct": -4,
+        "decision_correct": -1,
+        "expected_entity_count": 0,
+        "actual_entity_count": -1
+      },
+      "metrics": {
+        "extraction_precision": {
+          "current": 0.5319148936170213,
+          "updated": 0.4782608695652174,
+          "delta": -0.05365402405180386,
+          "change": "worsened"
+        },
+        "extraction_recall": {
+          "current": 0.6578947368421053,
+          "updated": 0.5789473684210527,
+          "delta": -0.07894736842105265,
+          "change": "worsened"
+        },
+        "extraction_f1": {
+          "current": 0.5882352941176471,
+          "updated": 0.5238095238095238,
+          "delta": -0.06442577030812324,
+          "change": "worsened"
+        },
+        "role_accuracy": {
+          "current": 0.88,
+          "updated": 0.9090909090909091,
+          "delta": 0.029090909090909056,
+          "change": "improved"
+        },
+        "a_accuracy": {
+          "current": 0.88,
+          "updated": 0.9090909090909091,
+          "delta": 0.029090909090909056,
+          "change": "improved"
+        },
+        "c_accuracy": {
+          "current": 0.88,
+          "updated": 0.8181818181818182,
+          "delta": -0.06181818181818177,
+          "change": "worsened"
+        },
+        "decision_accuracy": {
+          "current": 0.8157894736842105,
+          "updated": 0.7894736842105263,
+          "delta": -0.02631578947368418,
+          "change": "worsened"
+        },
+        "significance_precision": {
+          "current": 0.75,
+          "updated": 0.7857142857142857,
+          "delta": 0.0357142857142857,
+          "change": "improved"
+        },
+        "significance_recall": {
+          "current": 0.631578947368421,
+          "updated": 0.5789473684210527,
+          "delta": -0.05263157894736836,
+          "change": "worsened"
+        },
+        "significance_f1": {
+          "current": 0.6857142857142857,
+          "updated": 0.6666666666666666,
+          "delta": -0.01904761904761909,
+          "change": "worsened"
+        },
+        "false_positive_decision_rate": {
+          "current": 0.25,
+          "updated": 0.21428571428571427,
+          "delta": -0.035714285714285726,
+          "change": "improved"
+        }
+      },
+      "technical_errors": {
+        "current_count": 1,
+        "updated_count": 1,
+        "delta_count": 0,
+        "resolved_case_ids": [
+          "news-015"
+        ],
+        "introduced_case_ids": [
+          "news-018"
+        ],
+        "shared_case_ids": []
+      },
+      "can_replace": false,
+      "reason_codes": [
+        "updated_failed_fixed_thresholds",
+        "updated_introduced_technical_errors"
+      ],
+      "rule": "updated passes all four fixed thresholds and introduces no new technical errors relative to current"
+    }
+  },
+  "judge_evaluation": {
+    "by_version": {
+      "current": {
+        "entity_extraction_completeness": {
+          "threshold": 0.78,
+          "total": 24,
+          "correct_acceptances": 19,
+          "correct_rejections": 2,
+          "false_acceptances": 2,
+          "false_rejections": 1,
+          "agreement": {
+            "numerator": 21,
+            "denominator": 24,
+            "value": 0.875
+          },
+          "disagreements": [
+            {
+              "case_id": "news-001",
+              "version": "current",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 0.9,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            },
+            {
+              "case_id": "news-004",
+              "version": "current",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 0.1,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-024",
+              "version": "current",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 1.0,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            }
+          ]
+        },
+        "significance_score_adequacy": {
+          "threshold": 0.82,
+          "total": 24,
+          "correct_acceptances": 16,
+          "correct_rejections": 6,
+          "false_acceptances": 1,
+          "false_rejections": 1,
+          "agreement": {
+            "numerator": 22,
+            "denominator": 24,
+            "value": 0.9166666666666666
+          },
+          "disagreements": [
+            {
+              "case_id": "news-010",
+              "version": "current",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.8,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-020",
+              "version": "current",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.9,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            }
+          ]
+        }
+      },
+      "updated": {
+        "entity_extraction_completeness": {
+          "threshold": 0.78,
+          "total": 24,
+          "correct_acceptances": 18,
+          "correct_rejections": 3,
+          "false_acceptances": 2,
+          "false_rejections": 1,
+          "agreement": {
+            "numerator": 21,
+            "denominator": 24,
+            "value": 0.875
+          },
+          "disagreements": [
+            {
+              "case_id": "news-001",
+              "version": "updated",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 1.0,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            },
+            {
+              "case_id": "news-004",
+              "version": "updated",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 0.1,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-021",
+              "version": "updated",
+              "criterion": "entity_extraction_completeness",
+              "judge_score": 0.9,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            }
+          ]
+        },
+        "significance_score_adequacy": {
+          "threshold": 0.82,
+          "total": 24,
+          "correct_acceptances": 11,
+          "correct_rejections": 7,
+          "false_acceptances": 2,
+          "false_rejections": 4,
+          "agreement": {
+            "numerator": 18,
+            "denominator": 24,
+            "value": 0.75
+          },
+          "disagreements": [
+            {
+              "case_id": "news-001",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.6,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-009",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.9,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            },
+            {
+              "case_id": "news-010",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.8,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-011",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.9,
+              "judge_pass": true,
+              "reference_pass": false,
+              "outcome": "false_acceptances"
+            },
+            {
+              "case_id": "news-017",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.8,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            },
+            {
+              "case_id": "news-021",
+              "version": "updated",
+              "criterion": "significance_score_adequacy",
+              "judge_score": 0.7,
+              "judge_pass": false,
+              "reference_pass": true,
+              "outcome": "false_rejections"
+            }
+          ]
+        }
+      }
+    },
+    "overall": {
+      "total": 96,
+      "correct_acceptances": 64,
+      "correct_rejections": 18,
+      "false_acceptances": 7,
+      "false_rejections": 7,
+      "agreement": {
+        "numerator": 82,
+        "denominator": 96,
+        "value": 0.8541666666666666
+      }
+    }
+  }
+}
