@@ -159,6 +159,30 @@ class EndToEndTests(unittest.TestCase):
             {"numerator": 82, "denominator": 96, "value": 82 / 96},
         )
 
+    def test_report_provenance_and_decision_first_conclusion(self) -> None:
+        self.assertEqual(self.report["report_schema_version"], "1.1")
+        self.assertEqual(self.report["dataset"]["slices"], [])
+        self.assertEqual(
+            self.report["provenance"],
+            {
+                "dataset_versions": ["1.0"],
+                "judge_model_versions": ["judge-1"],
+                "judge_prompt_versions": ["prompt-1"],
+                "rubric_versions": ["rubric-1"],
+            },
+        )
+
+        conclusion = render_conclusion(self.report)
+        self.assertTrue(conclusion.startswith("# Итог оценки\n\n## Вердикт"))
+        for statement in (
+            "**Не заменять `current` на `updated` в текущем виде.**",
+            "дефицит правильных решений: **2**",
+            "**82/96 = 85.42%**",
+            "**18/24 = 75.00%**",
+            "`metadata.slices` не заполнены",
+        ):
+            self.assertIn(statement, conclusion)
+
     def test_committed_artifacts_are_byte_for_byte_reproducible(self) -> None:
         expected_report = json.dumps(self.report, ensure_ascii=False, indent=2) + "\n"
         expected_conclusion = render_conclusion(self.report)
