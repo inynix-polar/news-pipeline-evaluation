@@ -1,5 +1,5 @@
 {
-  "report_schema_version": "1.0",
+  "report_schema_version": "1.1",
   "integrity": {
     "passed": true,
     "files": {
@@ -99,6 +99,21 @@
     "empty_expected_case_ids": [
       "news-004",
       "news-016"
+    ],
+    "slices": []
+  },
+  "provenance": {
+    "dataset_versions": [
+      "1.0"
+    ],
+    "judge_model_versions": [
+      "judge-1"
+    ],
+    "judge_prompt_versions": [
+      "prompt-1"
+    ],
+    "rubric_versions": [
+      "rubric-1"
     ]
   },
   "configuration": {
